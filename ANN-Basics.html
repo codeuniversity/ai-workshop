@@ -21,8 +21,8 @@
 <header>
 <h1 class="title">ANN Basics</h1>
 </header>
-<h1 id="artifial-neural-networks">Artifial neural networks</h1>
-<p>Artifial neural networks or short: ANN (german: Künstliches Neuronales Netzwerk).</p>
+<h1 id="artificial-neural-networks">Artificial neural networks</h1>
+<p>Artificial neural networks or short: ANN (german: Künstliches Neuronales Netzwerk).</p>
 <p>ANNs are no new invention, to the contrary they are comparatively old, but the increasing computation power enables us to calculate bigger and bigger networks, which enables us to attack bigger and bigger problems.</p>
 <h2 id="neurons">Neurons</h2>
 <p>Since a ANN is a network or collection of neurons, the question occurs “What is a neuron?”.</p>
@@ -47,9 +47,9 @@ y =  f(z)
 <p>In the end the so calculated Activation is passed on to <strong>other neurons</strong>, commonly of the next layer.</p>
 <h2 id="activation-function">Activation Function</h2>
 <p>After we evaluate the input, we have a value that has no defined range. This value can be any real value (between <span class="math inline">\(-\infty\)</span> and <span class="math inline">\(+\infty\)</span>). But we still have to decide if this value is enough to trigger the neuron to fire or not. Therefore we use the activation function to decide for which range of values the connected neurons will consider this neuron to be fired and for which range they will consider the neuron as not fired. There are different kinds of activation functions, which bring different advantages and disadvantages. Sometimes activation functions are even linked to learning algorithms so you have to use the linked activation function to use this learning algorithm.</p>
-<p>The most common acticity functions are the Sigmoid function, the Tangens Hyperbolicus and especially the ReLu (Rectifier Linear Unit) function (max(0,x)).</p>
+<p>The most common activity functions are the Sigmoid function, the Tangens Hyperbolicus and especially the ReLu (Rectifier Linear Unit) function (max(0,x)).</p>
 <figure>
-<img src="http://www.cbcity.de/wp-content/uploads/2016/03/ActivationFunctions-770x154.png" title="common activation functions" alt="common activity functions" /><figcaption>common activity functions</figcaption>
+<img src="http://www.cbcity.de/wp-content/uploads/2016/03/ActivationFunctions-770x154.png" title="common activation functions" alt="common activation functions" /><figcaption>common activation functions</figcaption>
 </figure>
 <h4 id="rectifier-linear-unit">Rectifier linear unit</h4>
 <p><span class="math display">\[
@@ -72,7 +72,7 @@ f(x)= \left\{\begin{matrix}
 \]</span></p>
 <p>Exponential modification of the Rectifier, so the Neuron also fires when negative values are given (but weaker).</p>
 <ul>
-<li>returns value in range: <span class="math inline">\([-a, +\infty]\)</span><br />
+<li>returns value in range: <span class="math inline">\([0, +\infty]\)</span><br />
 </li>
 <li>everywhere differentiable<br />
 </li>
@@ -107,14 +107,14 @@ f(x)= \frac{1}{1+ e^{-x}}
 \]</span></p>
 <p>One of the most spreaded activation functions and the standard activation function in combination with Backpropagation.</p>
 <ul>
-<li>return values in range: <span class="math inline">\([0, +1]\)</span></li>
+<li>return values in range: <span class="math inline">\([0, 1]\)</span></li>
 <li>everywhere differential<br />
 </li>
 <li>smooth nonlinearities</li>
 </ul>
 <h4 id="hyperbolic-tangent">hyperbolic tangent</h4>
 <p><span class="math display">\[
-f(x)= \tanh(x) = \frac{2}{1+e^{-2x}}-1
+f(x)= \tanh(x) = \frac{1 + e^{-2x}}{1 - e^{-2x}}
 \]</span></p>
 <ul>
 <li>return values in range: <span class="math inline">\([-1, 1]\)</span></li>
@@ -138,7 +138,7 @@ f(x)= \tanh(x) = \frac{2}{1+e^{-2x}}-1
 </ol>
 <p><em>This layer returns the values, that represent the output of the whole neural network, therefore the activation function doesn’t get applied to this layer, because the evaluation if a neuron should fire or not is unimportant, since the output of the neuron is used as output for the whole network.</em></p>
 <figure>
-<img src="http://www.dspguide.com/graphics/F_26_5.gif" alt="visualisation simple ANN" /><figcaption>visualisation simple ANN</figcaption>
+<img src="http://www.dspguide.com/graphics/F_26_5.gif" alt="Visualisation of a simple ANN" /><figcaption>Visualisation of a simple ANN</figcaption>
 </figure>
 <p>A normal neural network has only one input and one output layer, but you can use as many hidden layers as you want. Each additional layer raises the amount of CPU time needed to train and evaluate the network. If your network includes a large number number of layers (i.e., more than 10) it is called a Deep Neural Network.</p>
 <p>In a simple artificial neural network each neuron of a layer is connected to every neuron of the next layer. These layers are called Fully Connected Layers.</p>
