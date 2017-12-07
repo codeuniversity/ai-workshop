@@ -203,3 +203,9 @@ $$
  w_{nO|1} & w_{nO|2} & ... & w_{nO|nH}
 \end{bmatrix}
 $$
+
+## Book recommendations
+
+*The Elements of Statistical Learning*  by  Trevor Hastie, Robert Tibshirani, Jerome Friedman
+
+*Neural Networks* by Raul Rojas ([available online](https://page.mi.fu-berlin.de/rojas/neural/neuron.pdf))
