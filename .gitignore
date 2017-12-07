@@ -2,3 +2,7 @@
 .DS_Store
 .idea
 *.rtf
+GoAI/GoEmpacemantsBlack.txt
+GoAI/GoEmpacemantsWhite.txt
+GoAI/GoMovesWhite.txt
+GoAI/GoMovesBlack.txt
