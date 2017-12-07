@@ -16,7 +16,7 @@ n_output = 2
 # movesWhite = np.loadtxt("GoMovesWhite.rtf")
 
 # Placeholder:
-x = tf.placeholder(dtype=tf.float32)
+x = tf.placeholder(dtype=tf.float32, shape=(1, n_input))
 y = tf.placeholder(dtype=tf.float32)
 
 # Initializer:
@@ -51,10 +51,10 @@ opt_operation = optimizer.minimize(loss)
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
-file = open("GoEmplacemantsBlack.rtf", "r")
+file = open("GoAI/GoEmplacemantsBlack.rtf", "r")
 line = np.fromstring(file.readline(), dtype=float, sep=' ')
 print(line)
-print(sess.run(z_hidden, feed_dict={x: np.array(line), y: np.array(line)}))
+print(sess.run(z_hidden, feed_dict={x: np.array([line]), y: np.array(line)}))
 
 
 # Definition shuffle algorithm
