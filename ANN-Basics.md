@@ -1,6 +1,6 @@
-# Artifial neural networks
+# Artificial neural networks
 
-Artifial neural networks or short: ANN (german: Künstliches Neuronales Netzwerk).
+Artificial neural networks or short: ANN (german: Künstliches Neuronales Netzwerk).
 
 ANNs are no new invention, to the contrary they are comparatively old, but the increasing computation power enables us to calculate bigger and bigger networks, which enables us to attack bigger and bigger problems.
 
