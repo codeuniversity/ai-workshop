@@ -1,116 +1,117 @@
-#Artifial neural networks
+# Artifial neural networks
 
-Künstliches Neuronales Netzwerk: (eng.: artificial neural network ): (short: ANN)
+Artifial neural networks or short: ANN (german: Künstliches Neuronales Netzwerk).
 
-ANNs are no new Invention, in the opposite they are comparable old, but the increasing operation power enables us to calculate bigger and bigger networks, what enables us to attack bigger and bigger problems.
+ANNs are no new invention, to the contrary they are comparatively old, but the increasing computation power enables us to calculate bigger and bigger networks, which enables us to attack bigger and bigger problems.
 
-##Neurons
+## Neurons
 
-Since a ANN is a network or collection of neurons, the question occurs what is a neuron.
+Since a ANN is a network or collection of neurons, the question occurs "What is a neuron?".
 
-A Neuron is inspired by the structure of a Neuron in a human brain a object that receivs an or mostly several impulses and react more or less strong to them and in the end returns a corresponding impulse again.
+A neuron is inspired by the structure of a neuron in a human brain. It receives one or more impulses and reacts by outputting a more or less intense signal.
 
-###Realization
+### Realization
 
-A Neuron is recieving an input-vector (the impulse):
+A neuron is recieving an input-vector (the impulse):
 
-$$$
-
+$$
 \overrightarrow{x} = \left(\begin{array}{c}x_{0}\\ x_{1}\\ ...\\ x_{n}\end{array}\right)
+$$
 
-$$$
+After the neuron recieves the input it starts to evaluate the input, by multiplying each input value with an internally saved **Weight**. When we create a new neural network we normally initialize the weights with random values.
 
-After the neuron recieved the input it's starts to evaluate the input, by multiply each input value with an internal saved **Weight**. When we create a new Neural network we normally initialize the Weights with random values.
-
-$$$
-
+$$
 \sum_{i=0}^{n} w_{i} * x_{i}
+$$
 
-$$$
+After the input is evaluated the **Offset (Bias)** gets added, the offset is used as additional parameter to increase the efficency of the network. The resulting value is the internal state z. When we create a new neural network we normally initialize each bias with the value zero (0).
 
-After the input is evaluated the **offset(Bias)** gets added, the offset is used as additional parameter to increase the efficency of the network. The resulting value is the internal state z. When we creat a new neural network we normally initialize each bias with the value zero (0).
-
-$$$
-
+$$
 z = (\sum_{i=0}^{n} w_{i} * x_{i})+b
+$$
 
-$$$
+This so calculated **internal state** gets then passed on to the **activation function** to calculate the **Activation(y)** of the Neuron.
 
-This so calculated **internat state** get than passed on to the **Activity funtion** to calculate the **Activation(y)** of the Neuron.
-
-$$$
-
+$$
 y =  f(z)
+$$
 
-$$$
+In the end the so calculated Activation is passed on to **other neurons**, commonly of the next layer.
 
-In the end the so calculated Activaion is passed on to **other Neurons**, commonly of the next layer.
-
-##Activation Function
-After we evaluluated the input we have a value, that has no defined range, this value can be literally every value between $$$ -\infty $$$ and $$$ +\infty $$$. But we still have to decide if this value is enough to trigger the neuron to fire or not. Therfore we use the actviation function, so the Activation function will decide for which range of values the connected neurons will consider this neuron as fired and for which range they will consider the neuron as not fired.
-There are different kinds of activation function, which bring different advantages and disadvantages. Sometimes activation functions are even linked to learn algorithm so you have to use the linked activation function to use this learning algorithm.
+## Activation Function
+After we evaluate the input, we have a value that has no defined range. This value can be any real value (between $-\infty$ and $+\infty$). But we still have to decide if this value is enough to trigger the neuron to fire or not. Therefore we use the activation function to decide for which range of values the connected neurons will consider this neuron to be fired and for which range they will consider the neuron as not fired.
+There are different kinds of activation functions, which bring different advantages and disadvantages. Sometimes activation functions are even linked to learning algorithms so you have to use the linked activation function to use this learning algorithm.
 
 The most common acticity functions are the Sigmoid function, the Tangens Hyperbolicus and especially the ReLu (Rectifier Linear Unit) function (max(0,x)).
 
-![common activity functions](http://www.cbcity.de/wp-content/uploads/2016/03/ActivationFunctions-770x154.png "common activity functions")
+![common activity functions](http://www.cbcity.de/wp-content/uploads/2016/03/ActivationFunctions-770x154.png "common activation functions")
 
-####Rectifier linear unit
+#### Rectifier linear unit
 $$
 f(x)= max(x,0)
 $$
-One of the simplest activation functions, that let the Neuron only fire if the activation is bigger than zero.
-> return values in range: [0, +$$$\infty$$$]
-> not everywhere differentiable
-> continuous
 
-#####Exponential linear unit
+One of the simplest activation functions, that lets the Neuron only fire if the activation is bigger than zero.
+
+* return values in range: $[0, +\infty]$  
+* not everywhere differentiable  
+* continuous
+
+#### Exponential linear unit
 $$
 f(x)= \left\{\begin{matrix}
  x& \text{if x}\geq 0 \\
  (e^{x}-1)& \text{otherwise}
 \end{matrix}\right.
 $$
-Exponential modification of the Rectifier, so the Neuron also fires when negativ values are given (but weaker).
-> returns value in range: [-a, +$$$\infty$$$]
-> everywhere differentiable
-> smooth nonlinearities
 
-####Softplus
+Exponential modification of the Rectifier, so the Neuron also fires when negative values are given (but weaker).
+
+* returns value in range: $[-a, +\infty]$  
+* everywhere differentiable  
+* smooth nonlinearities
+
+#### Softplus
 $$
 f(x)= log(e^{x}+1)
 $$
-Tries to perform a smooth approximation on the standard relu-functions.
-> return values in range: [0, +$$$\infty$$$]
-> everywhere differentiable
-> smooth nonlinearities
 
-####Softsign
+Tries to perform a smooth approximation on the standard relu-functions.
+
+* return values in range: $[0, +\infty]$  
+* everywhere differentiable  
+* smooth nonlinearities
+
+#### Softsign
 $$
 f(x)= \frac{x}{\left | x \right |+1}
 $$
-> return values in range: [-1, +1]
-> everywhere differentiable
-> smooth nonlinearities
 
-####Sigmoid
+* return values in range: $[-1, +1]$  
+* everywhere differentiable  
+* smooth nonlinearities
+
+#### Sigmoid
 $$
 f(x)= \frac{1}{1+ e^{-x}}
 $$
+
 One of the most spreaded activation functions and the standard activation function in combination with Backpropagation.
-> return values in range: [0, +1]
-> everywhere differential
-> smooth nonlinearities
 
-####hyperbolic tangent
-
-$$
-f(x)= tanh(x) = \frac{2}{1+e^{-2x}}-1
-$$
-> return values in range: [-1, 1]
-> everywhere differential
-> smooth nonlinearities
+* return values in range: $[0, +1]$
+* everywhere differential  
+* smooth nonlinearities
 
-##Layer
+#### hyperbolic tangent
+$$
+f(x)= \tanh(x) = \frac{2}{1+e^{-2x}}-1
+$$
+
+* return values in range: $[-1, 1]$
+* everywhere differential  
+* smooth nonlinearities
+
+## Layers
 
 A neural network consisting of only one neuron is called a Perceptron, but since such a neural network is limited in its use cases, we tend to use neural networks with several layers.
 
@@ -126,75 +127,66 @@ In general you can differ between three kinds of layers
 
 3. **The ouput layer.**
 
-*This Layer return the values, that represent the output of the whole neural network, therefore the activation function doesn't get applied to this layer, because the evaluation if a neuron should fire or not is unimportant, since the output of the neuron is used as output for the whole network.*
-
-
+*This layer returns the values, that represent the output of the whole neural network, therefore the activation function doesn't get applied to this layer, because the evaluation if a neuron should fire or not is unimportant, since the output of the neuron is used as output for the whole network.*
 
 ![visualisation simple ANN](http://www.dspguide.com/graphics/F_26_5.gif)
 
-A normal neural network has corresponding only one input and one output layer, but you can use as much hidden layer as you want. But please note that the amount of layer will raise the amount of CPU and time, needed to train your network. If yoou network includes a spefice number of Layers (10 ... 20) you can speak of it as Depp neural network.
+A normal neural network has only one input and one output layer, but you can use as many hidden layers as you want. Each additional layer raises the amount of CPU time needed to train and evaluate the network. If your network includes a large number number of layers (i.e., more than 10) it is called a Deep Neural Network.
 
-In a simple artificial neural network each neuron is with every neuron of the next layer connected. Each of such layers, where each neuron is connected with each neuron of the next layer, is called Fully Connected Layer.
+In a simple artificial neural network each neuron of a layer is connected to every neuron of the next layer. These layers are called Fully Connected Layers.
 
-**Extract the following to ++different kinds of ANNs++**
+### Convolutional Neural Networks
 
-It's also possible to integrate a case seperation into a ANN, this option is common for the extraction of feautures from a data set. This case seperation is called convolution and is realized through a  simple function, but it turned out to be a really strong functionality. Such networks are named Convolutional neural networks (or short **ConvNets**)
+It's also possible to integrate a case seperation into a ANN, this option is common for the extraction of feautures from a data set. This case seperation is called convolution and is realized through a simple function, but it turned out to be a really strong functionality. Such networks are named Convolutional Neural Networks (or short **ConvNets**)
 
+## Loss function
 
+We can pass values to our network and calculate an activation based on the random weights but we could do the same thing with a piece of paper and a few dies. But before we implement the most well known ability of an AI, namely to learn, we first need to know evaluate the correctness of the AI. 
 
-##Loss function
+### Classification
 
-We now can pass values on to our network and calculate a Activation based on the random weights but we could do the same thing with a piece of paper and a few dieces. But before we implemenent the best known ability of an AI, namely to learn, we first need to know if the thing the AI does before it started learning was right or wrong. But we still have to differenciate between several cases and how we can evaluate how wrong or right the network at this case was.
+ANN can be used to sort inputs into different classes. A simple classification problem might only have two states (true or false). 
+The ANN therefore either gets the class correct or not. To evaluate your AI you can just count how many correct predictions the AI made (the more the better).
 
-###Classification
+For a classifier it's also useful to use a softmax function as the last layer to transform the actual activations of the previous layer into a probability (from 0 to 1).
 
-In this case the programmer tries to teach the ANN to classify different inputs into different classes. In this case are only two states at the end possible true or false, either the ANN guessed the class correctly or not. In the easiest case you would just count how many classes your AI guessed correctly and the more the better is your AI trained.
-
-For a classifier it also offers themself to use a softmax function is the last layer (as target function) to transform the real activations of the previous layers into a probability.
-
-#####Softmax Function
+##### Softmax Function
 
 This function is used to reduce a K-dimensional vector z of arbitary real numbers:
 
-$$$
-
+$$
 z = \left(\begin{array}{c}z_{0}\\ z_{1}\\ ...\\ z_{K}\end{array}\right) e.g.: \left(\begin{array}{c}80.06\\ -200\\ -50.2\\ 0\end{array}\right)
+$$
 
-$$$
+to a K-dimensional vector of real values between [0, 1] that add up to one.
 
-to a K-dimensional vector of real values between [0, 1] that add upp to one.
+$$
+\sigma(z) = \left(\begin{array}{c} \sigma(z)_{0}\\ \sigma(z)_{1} \\ ...\\ \sigma(z)_{K}\end{array}\right) e.g.: \left(\begin{array}{c}0.5\\ 0.05\\0.05\\ 0.4\end{array}\right)
+$$
 
-$$$
-
-\sigma(z) = \left(\begin{array}{c} \sigma(z)_{0}\\ \sigma(z)_{1}\\ ...\\ \sigma(z)_{K}\end{array}\right) e.g.: \left(\begin{array}{c}0.5\\ 0.05\\0.05\\ 0.4\end{array}\right)
-
-$$$
-
-$$$
-
+$$
 1 = \sum_{i = 0}^{K} \sigma(z)_{i}
+$$
 
-$$$
+$$
+\textrm{for example:} ~~ 1 = 0.5 + 0.05 + 0.05 + 0.4
+$$
 
-$$$
+### Regression
 
-e.g. : 1 = 0.5 + 0.05 +0.05 +0.4
+In this case we expect our network to return an estimated or predicted response (mostly a value or a set of values). We need a different loss function for calculate the loss. Commonly we will therefore use L1 were we just use the **difference between the expected and the returned output**. Mostly to create a more neutral loss we take the **square of the difference** this loss function is then called L2. In some cases it can also become handy to use Cross Entropy as a loss function.
 
-$$$
+## Learning
 
-###Regression
+After we defined which cases our network got right or wrong, we can start to teach it. Note that you naturally have to first collect fitting training and test data for your network. After that you train your network by giving the network one set of your training data to process. Since we initialized the weights of the neurons with random values it is unlikely that the output is similar to the expected output. To change that we start to tune our network using our loss function. There are several different technics how to do that, I will introduce some of them in a different file.
 
-In this case we expect our network to return an estimated or predicted response (mostly a value or a set of values). We therefore need a different loss function for calculate the loss. Commonly we will therefore use L1 were we just use the **differents between the expected and the returned output**. Mostly to create a more neutral loss we take the **square of the differnce** this loss function is then called L2. In some cases it can also become  handy to use Cross Entropy as loss function.
-
-##Learning
-
-After we defined when our network did right or wrong, we now can start to teach it. Note that you natural have to first collect fitting trainings and test data for your network. After that you tran your network by give the network one set of your train data to process. Since we initialized the wheights of the neurons with random values it is unlikely that the produced output is similar to the expected output. To change that we start to "punish" our network using out loss function. There are several different technics how to do that, I will introduce some of them in a different file.
-
-##Representation as Matrix
-Its also possible to represent a neural network as matrix. Therefore we extract the weight-vector of the neurons and put them together in a matrix. Each column of these matrix represents now the weigths of one neurons. Each Bias gets extracted into a external vector that gets added during the evaluation.
-These principle can be applied to each hidden and the output layer.
+## Representation as Matrix
+It's possible to represent a neural network as sequence of matrices. We extract the weight-vectors of the neurons and assemble them in a matrix. Each column of these matrices represents the weigths of one neuron. Each Bias gets extracted into a separate vector that gets added during the evaluation.
+This principle can be applied to every hidden layer as well as the output layer.
 $$n : \text{length input Vactor} $$
+
 $$nH : \text{number hidden neurons} $$
+
 $$
 \begin{bmatrix}
  w_{1|1}& w_{1|2} & ... & w_{1|n} \\
@@ -203,9 +195,11 @@ $$
  w_{nH|1} & w_{nH|2} & ... & w_{nH|n}
 \end{bmatrix}
 $$
+
 $$
 nO : \text{number of output neurons}
 $$
+
 $$
 \begin{bmatrix}
  w_{1|1}& w_{1|2} & ... & w_{1|nH} \\
