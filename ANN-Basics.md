@@ -42,9 +42,9 @@ In the end the so calculated Activation is passed on to **other neurons**, commo
 After we evaluate the input, we have a value that has no defined range. This value can be any real value (between $-\infty$ and $+\infty$). But we still have to decide if this value is enough to trigger the neuron to fire or not. Therefore we use the activation function to decide for which range of values the connected neurons will consider this neuron to be fired and for which range they will consider the neuron as not fired.
 There are different kinds of activation functions, which bring different advantages and disadvantages. Sometimes activation functions are even linked to learning algorithms so you have to use the linked activation function to use this learning algorithm.
 
-The most common acticity functions are the Sigmoid function, the Tangens Hyperbolicus and especially the ReLu (Rectifier Linear Unit) function (max(0,x)).
+The most common activity functions are the Sigmoid function, the Tangens Hyperbolicus and especially the ReLu (Rectifier Linear Unit) function (max(0,x)).
 
-![common activity functions](http://www.cbcity.de/wp-content/uploads/2016/03/ActivationFunctions-770x154.png "common activation functions")
+![common activation functions](http://www.cbcity.de/wp-content/uploads/2016/03/ActivationFunctions-770x154.png "common activation functions")
 
 #### Rectifier linear unit
 $$
@@ -67,7 +67,7 @@ $$
 
 Exponential modification of the Rectifier, so the Neuron also fires when negative values are given (but weaker).
 
-* returns value in range: $[-a, +\infty]$  
+* returns value in range: $[0, +\infty]$  
 * everywhere differentiable  
 * smooth nonlinearities
 
@@ -98,13 +98,13 @@ $$
 
 One of the most spreaded activation functions and the standard activation function in combination with Backpropagation.
 
-* return values in range: $[0, +1]$
+* return values in range: $[0, 1]$
 * everywhere differential  
 * smooth nonlinearities
 
 #### hyperbolic tangent
 $$
-f(x)= \tanh(x) = \frac{2}{1+e^{-2x}}-1
+f(x)= \tanh(x) = \frac{1 + e^{-2x}}{1 - e^{-2x}}
 $$
 
 * return values in range: $[-1, 1]$
@@ -129,7 +129,7 @@ In general you can differ between three kinds of layers
 
 *This layer returns the values, that represent the output of the whole neural network, therefore the activation function doesn't get applied to this layer, because the evaluation if a neuron should fire or not is unimportant, since the output of the neuron is used as output for the whole network.*
 
-![visualisation simple ANN](http://www.dspguide.com/graphics/F_26_5.gif)
+![Visualisation of a simple ANN](http://www.dspguide.com/graphics/F_26_5.gif)
 
 A normal neural network has only one input and one output layer, but you can use as many hidden layers as you want. Each additional layer raises the amount of CPU time needed to train and evaluate the network. If your network includes a large number number of layers (i.e., more than 10) it is called a Deep Neural Network.
 
