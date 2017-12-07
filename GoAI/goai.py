@@ -51,7 +51,7 @@ opt_operation = optimizer.minimize(loss)
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
-file = open("GoAI/GoEmplacemantsBlack.rtf", "r")
+file = open("GoEmplacemantsBlack.rtf", "r")
 line = np.fromstring(file.readline(), dtype=float, sep=' ')
 print(line)
 print(sess.run(z_hidden, feed_dict={x: np.array([line]), y: np.array(line)}))
